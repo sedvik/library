@@ -5,10 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./style.css" rel="stylesheet" type="text/css">
-    <script src="./library.js"></script>
+    <script src="./library.js" defer></script>
     <title>Library</title>
 </head>
 <body>
-    
+    <h1>Library</h1>
+    <!-- Book cards to be submitted with js from myLibrary array-->
+    <div id="book-container">
+
+    </div>
+    <button id="new-book-btn">Add New Book</button>
+    <form id="new-book-form">
+        <!-- title, author, and num-pages input -->
+        <label for="title">Title:</label>
+        <input id="title" type="text" name="title" required>
+        <label for="author">Author:</label>
+        <input id="author" type="text" name="author" required>
+        <label for="num-pages">Number of Pages:</label>
+        <input id="num-pages" type="number" name="num-pages" required>
+        <label>Read?</label>
+        
+        <!-- read radio button -->
+        <p>Have you read this book?</p>
+        <input id="yes" type="radio" name="read" value="yes" required>
+        <label for="yes">Yes</label>
+        <input id="no" type="radio" name="read" value="no" required>
+        <label for="no">No</label>
+
+        <!-- submit button --> 
+        <input id="add-book" type="submit" value="Add Book">
+    </form>
 </body>
 </html>

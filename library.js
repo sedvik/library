@@ -16,9 +16,22 @@ function addBookToLibrary(book) {
 
 /* Event Handler functions */
 
-// createBook function - creates a book based on user input
+// createBook function - creates a book based on user form input
 function createBook(e) {
+    // Prevent default form submission behavior
+    e.preventDefault();
+    
+    // Extract form values
 
+    // Create book instance
+    const book = {};
+
+    // add the book to the library
+    addBookToLibrary(book);
+
+    // Clear all form fields
+
+    // Hide the form
 }
 
 /* Add event listeners to page buttons */
