@@ -10,11 +10,38 @@
 </head>
 <body>
     <h1>Library</h1>
-    <!-- Book cards to be submitted with js from myLibrary array-->
+    <!-- Book cards to be submitted with js from myLibrary array -->
+    <h2>Current Books</h2>
     <div id="book-container">
-
+        <div class="book-card">
+            <div class="card-entry">
+                <h3>Title:</h3>
+                <p>The Shining</p>
+            </div>
+            <div class="card-entry">
+                <h3>Author:</h3>
+                <p>Stephen King</p>
+            </div>
+            <div class="card-entry">
+                <h3># Pages:</h3>
+                <p>659</p>
+            </div>
+            <div class="card-entry">
+                <h3>Read?</h3>
+                <div class="book-read">
+                    <input id="1-yes" type="radio" name="read" value="yes">
+                    <label for="1-yes">yes</label>
+                    <input id="1-no" type="radio" name="read" value="no">
+                    <label for="1-no">no</label>
+                </div>
+            </div>
+            <div class="card-entry">
+                <button class="remove-book">Remove Book</button>
+            </div>
+        </div>
     </div>
-    <button id="new-book-btn">Add New Book</button>
+    <h2>New Books</h2>
+    <button id="new-book-btn">Add Book</button>
     <form id="new-book-form">
         <!-- title, author, and num-pages input -->
         <label for="title">Title:</label>
