@@ -1,0 +1,126 @@
+/* General page style */
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: cornsilk
+}
+
+h1, 
+h2, 
+h3 {
+    text-align: center;
+    font-weight: bold;
+    padding: 1rem;
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    padding: 0rem;
+}
+
+h4 {
+    font-size: 1.1rem;
+}
+
+button {
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background-color: wheat;
+    border-bottom: 2px solid salmon;
+}
+
+/* Current Books Section */
+
+#book-container {
+    width: 80%;
+    padding: 0.6rem;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.book-card {
+    width: 250px;
+    height: 250px;
+    padding: 1rem;
+    background-color: aquamarine;
+    border: 1px solid black;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-entry {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.book-read {
+
+}
+
+.card-entry > h4 {
+    font-weight: bold;
+}
+
+/* New Books Section */
+#add-book-container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#new-book-form {
+    width: 30%;
+    margin-top: 1rem;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 0.4rem;
+    background-color: antiquewhite;
+}
+
+#new-book-form input[type="text"], 
+#new-book-form input[type="number"] {
+    width: 98%;
+}
+
+#new-book-form > label {
+    display: inline-block;
+    font-style: italic;
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+}
+
+#new-book-form p {
+    margin-top: 0.4rem;
+    margin-bottom: 0.2rem;
+    font-style: italic;
+}
+
+#new-book-form input[type="submit"] {
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+}
+

@@ -4,35 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./style.css" rel="stylesheet" type="text/css">
+    <link href="./css/reset.css" rel="stylesheet" type="text/css">
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
     <script src="./library.js" defer></script>
     <title>Library</title>
 </head>
 <body>
-    <h1>Library</h1>
+    <header>
+        <h1>Library</h1>
+    </header>
     <!-- Book cards to be submitted with js from myLibrary array -->
     <h2>Current Books</h2>
     <div id="book-container">
         <div class="book-card">
+            <h3>The Shining</h3>
             <div class="card-entry">
-                <h3>Title:</h3>
-                <p>The Shining</p>
-            </div>
-            <div class="card-entry">
-                <h3>Author:</h3>
+                <h4>Author:</h4>
                 <p>Stephen King</p>
             </div>
             <div class="card-entry">
-                <h3># Pages:</h3>
+                <h4>Pages:</h4>
                 <p>659</p>
             </div>
             <div class="card-entry">
-                <h3>Read?</h3>
+                <h4>Read?</h4>
                 <div class="book-read">
                     <input id="1-yes" type="radio" name="read" value="yes">
-                    <label for="1-yes">yes</label>
+                    <label for="1-yes">Yes</label>
                     <input id="1-no" type="radio" name="read" value="no">
-                    <label for="1-no">no</label>
+                    <label for="1-no">No</label>
                 </div>
             </div>
             <div class="card-entry">
@@ -41,26 +41,34 @@
         </div>
     </div>
     <h2>New Books</h2>
-    <button id="new-book-btn">Add Book</button>
-    <form id="new-book-form">
-        <!-- title, author, and num-pages input -->
-        <label for="title">Title:</label>
-        <input id="title" type="text" name="title" required>
-        <label for="author">Author:</label>
-        <input id="author" type="text" name="author" required>
-        <label for="num-pages">Number of Pages:</label>
-        <input id="num-pages" type="number" name="num-pages" required>
-        <label>Read?</label>
-        
-        <!-- read radio button -->
-        <p>Have you read this book?</p>
-        <input id="yes" type="radio" name="read" value="yes" required>
-        <label for="yes">Yes</label>
-        <input id="no" type="radio" name="read" value="no" required>
-        <label for="no">No</label>
+    <div id="add-book-container">
+        <button id="new-book-btn">Add New Book</button>
+        <form id="new-book-form">
+            <!-- title, author, and num-pages input -->
+            <label for="title">Title:</label>
+            <br>
+            <input id="title" type="text" name="title" required>
+            <br>
+            <label for="author">Author:</label>
+            <input id="author" type="text" name="author" required>
+            <br>
+            <label for="num-pages">Number of Pages:</label>
+            <br>
+            <input id="num-pages" type="number" name="num-pages" required>
+            <br>
+            
+            <!-- read radio button -->
+            <p>Have you read this book?</p>
+            <input id="yes" type="radio" name="read" value="yes" required>
+            <label for="yes">Yes</label>
+            <input id="no" type="radio" name="read" value="no" required>
+            <label for="no">No</label>
+            <br>
 
-        <!-- submit button --> 
-        <input id="add-book" type="submit" value="Add Book">
-    </form>
+            <!-- submit button --> 
+            <input id="add-book" type="submit" value="Add Book">
+        </form>
+    </div>
+    
 </body>
 </html>
