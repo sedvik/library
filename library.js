@@ -92,8 +92,6 @@ function createBookElement(book) {
     // If the book has been read, set this radio button as checked
     if (book.read) yesInput.checked = 'checked';
    
-    
-
     const yesLabel = document.createElement('label');
     yesLabel.setAttribute('for', `${index}-yes`);
     yesLabel.textContent = 'Yes';
@@ -105,7 +103,6 @@ function createBookElement(book) {
     noInput.setAttribute('value', 'no');
     // If the book has not been read, set this radio button as checked
     if (!book.read) noInput.checked = 'checked';
-
 
     const noLabel = document.createElement('label');
     noLabel.setAttribute('for', `${index}-no`);
@@ -125,6 +122,8 @@ function createBookElement(book) {
 
     const removeBookBtn = document.createElement('button');
     removeBookBtn.classList.add('remove-book');
+    removeBookBtn.setAttribute('data-index', `${index}`);
+    removeBookBtn.addEventListener('click', removeBook);
     removeBookBtn.textContent = 'Remove';
 
     removeBookDiv.appendChild(removeBookBtn);
@@ -154,6 +153,20 @@ function renderBooks() {
 // isValidForm function - checks to ensure new book form inputs are valid
 function isValidForm() {
 
+}
+
+// toggleForm function - toggles the visibility of the new book form
+function toggleForm() {
+    // Toggle the visibility of the new book form and the display text of the new-book-btn
+    const addNewBookBtn = document.querySelector('#new-book-btn');
+    const newBookForm = document.querySelector('#new-book-form');
+    if (addNewBookBtn.textContent === 'Add New Book') {
+        newBookForm.style.display = 'block';
+        addNewBookBtn.textContent = 'Hide New Book Form';
+    } else {
+        newBookForm.style.display = 'none';
+        addNewBookBtn.textContent = 'Add New Book';
+    }
 }
 
 /* Event Handler functions */
@@ -188,20 +201,16 @@ function createBook(e) {
     document.querySelector('#new-book-form').reset();
 
     // Hide the form
-    document.querySelector('#new-book-form').style.display = 'none';
+    toggleForm();
 }
 
-// toggleForm function - toggles the visibility of the new book form
-function toggleForm(e) {
-    // Toggle the visibility of the new book form and the display text of the new-book-btn
-    const newBookForm = document.querySelector('#new-book-form');
-    if (e.target.textContent === 'Add New Book') {
-        newBookForm.style.display = 'block';
-        e.target.textContent = 'Hide New Book Form';
-    } else {
-        newBookForm.style.display = 'none';
-        e.target.textContent = 'Add New Book';
-    }
+// removeBook function - removes a book from the DOM and myLibrary array
+function removeBook(e) {
+    const index = e.target.getAttribute('data-index');
+    myLibrary.splice(index, 1);
+
+    // Re-render the books to keep indices consistent
+    renderBooks();
 }
 
 /* Add event listeners to page buttons */
