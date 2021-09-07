@@ -81,6 +81,7 @@ function createBookElement(book) {
     yesInput.setAttribute('value', 'yes');
     // If the book has been read, set this radio button as checked
     if (book.read) yesInput.checked = 'checked';
+    yesInput.addEventListener('change', handleReadChange);
    
     const yesLabel = document.createElement('label');
     yesLabel.setAttribute('for', `${index}-yes`);
@@ -93,6 +94,7 @@ function createBookElement(book) {
     noInput.setAttribute('value', 'no');
     // If the book has not been read, set this radio button as checked
     if (!book.read) noInput.checked = 'checked';
+    noInput.addEventListener('change', handleReadChange);
 
     const noLabel = document.createElement('label');
     noLabel.setAttribute('for', `${index}-no`);
@@ -201,6 +203,15 @@ function removeBook(e) {
 
     // Re-render the books to keep indices consistent
     renderBooks();
+}
+
+// handleReadChange function - toggles the read status of myLibrary element corresponding to the clicked DOM element
+function handleReadChange(e) {
+    // extract index from the radio button's name attribute, which is in the format "read-INDEX"
+    const index = e.target.getAttribute('name').split('read-')[1];
+    
+    // Call the book's toggleRead method
+    myLibrary[index].toggleRead();
 }
 
 /* Add event listeners to page buttons */
