@@ -1,23 +1,8 @@
 // myLibrary - an array containing book objects
 const myLibrary = [
-    {
-        title: "The Hobbit",
-        author: "J.R.R Tolkien",
-        pages: 304,
-        read: true
-    },
-    {
-        title: "The Name of the Wind",
-        author: "Patrick Rothfuss",
-        pages: 662,
-        read: true
-    },
-    {
-        title: "The Shining",
-        author: "Stephen King",
-        pages: 659,
-        read: false
-    }
+    new Book("The Hobbit", "J.R.R. Tolkien", 304, true),
+    new Book("The Name of the Wind", "Patrick Rothfuss", 662, true),
+    new Book("The Shining", "Stephen King", 659, false)
 ];
 
 // Book constructor
@@ -26,6 +11,11 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+}
+
+// Add toggleRead method to Book's prototype
+Book.prototype.toggleRead = function() {
+    this.read = !this.read;
 }
 
 // addBookToLibrary function - adds a single book to the myLibrary array and re-renders the books
