@@ -68,6 +68,10 @@ header {
     align-items: center;
 }
 
+.unread-card {
+    background-color: lightcoral;
+}
+
 .card-entry {
     width: 90%;
     display: flex;

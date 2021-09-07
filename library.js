@@ -32,6 +32,10 @@ function createBookElement(book) {
     // Create bookElement container div
     const bookElement = document.createElement('div');
     bookElement.classList.add('book-card');
+    bookElement.setAttribute('data-index', index);
+    if (!book.read) {
+        bookElement.classList.add('unread-card')
+    }
 
     // Create book title
     const bookTitle = document.createElement('h3');
@@ -210,6 +214,9 @@ function handleReadChange(e) {
     // extract index from the radio button's name attribute, which is in the format "read-INDEX"
     const index = e.target.getAttribute('name').split('read-')[1];
     
+    // Toggle the .unread-card class of the corresponding book card
+    document.querySelector(`.book-card[data-index="${index}"]`).classList.toggle('unread-card');
+
     // Call the book's toggleRead method
     myLibrary[index].toggleRead();
 }
