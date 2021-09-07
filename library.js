@@ -1,9 +1,12 @@
 // myLibrary - an array containing book objects
-const myLibrary = [
+/*
+let myLibrary = [
     new Book("The Hobbit", "J.R.R. Tolkien", 304, true),
     new Book("The Name of the Wind", "Patrick Rothfuss", 662, true),
     new Book("The Shining", "Stephen King", 659, false)
 ];
+*/
+let myLibrary;
 
 // Book constructor
 function Book(title, author, pages, read) {
@@ -21,6 +24,7 @@ Book.prototype.toggleRead = function() {
 // addBookToLibrary function - adds a single book to the myLibrary array and re-renders the books
 function addBookToLibrary(book) {
     myLibrary.push(book);
+    saveMyLibrary(myLibrary);
     renderBooks();
 }
 
@@ -140,6 +144,7 @@ function renderBooks() {
     document.querySelector('#book-container').textContent = '';
     
     const bookContainer = document.querySelector('#book-container');
+
     myLibrary.forEach(function(book) {
         const bookElement = createBookElement(book);
         bookContainer.appendChild(bookElement);
@@ -163,6 +168,44 @@ function toggleForm() {
         newBookForm.style.display = 'none';
         addNewBookBtn.textContent = 'Add New Book';
     }
+}
+
+// storageAvailable function - detects whether localStorage is both supported and available
+function storageAvailable() {
+    try {
+        const x = '__storage_test__';
+        localStorage.setItem(x, x);
+        localStorage.removeItem(x);
+        return true;
+    } catch(e) {
+        return false;
+    }
+}
+
+// saveMyLibrary function - saves the myLibrary array in local storage
+function saveMyLibrary(library) {
+    if (!storageAvailable()) {
+        return
+    }
+    localStorage.setItem('myLibrary', JSON.stringify(library));
+}
+
+function retrieveLibrary() {
+    // return an empty array if storage is not available
+    if(!storageAvailable()) {
+        return [];
+    }
+    let myLibrary = localStorage.getItem('myLibrary');
+    if (myLibrary === null) {
+        return [];
+    }
+
+    // Process the myLibrary array to convert the individual objects back to Book instances
+    myLibrary = JSON.parse(myLibrary).map(book => {
+        return new Book(book.title, book.author, book.pages, book.read);
+    });
+
+    return myLibrary;
 }
 
 /* Event Handler functions */
@@ -211,6 +254,9 @@ function removeBook(e) {
     const index = e.target.getAttribute('data-index');
     myLibrary.splice(index, 1);
 
+    // Save modified myLibrary to localStorage
+    saveMyLibrary(myLibrary);
+
     // Re-render the books to keep indices consistent
     renderBooks();
 }
@@ -225,6 +271,9 @@ function handleReadChange(e) {
 
     // Call the book's toggleRead method
     myLibrary[index].toggleRead();
+
+    // Save modified myLibrary to localStorage
+    saveMyLibrary(myLibrary);
 }
 
 /* Add event listeners to page buttons */
@@ -234,5 +283,6 @@ addBookBtn.addEventListener('click', createBook);
 const addNewBookBtn = document.querySelector('#new-book-btn');
 addNewBookBtn.addEventListener('click', toggleForm);
 
-// Initial call of renderBooks function
+// Retrive myLibrary array from localStorage and call renderBooks function
+myLibrary = retrieveLibrary();
 renderBooks();
