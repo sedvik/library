@@ -35,8 +35,8 @@ function addBookToLibrary(book) {
 
 // createBookElement - generates a book div element from a book object instance
 function createBookElement(book) {
-    // Determine what the index of the new book will be based on myLibrary length
-    const index = myLibrary.length;
+    // Determine what the index of book is based on its position in myLibrary
+    const index = myLibrary.indexOf(book);
     
     // Create bookElement container div
     const bookElement = document.createElement('div');
@@ -79,15 +79,20 @@ function createBookElement(book) {
     const readH4 = document.createElement('h4');
     readH4.textContent = 'Read?';
 
-    // TODO - Create a separate function for generating this div
+    // Create .book-read div
     const bookReadDiv = document.createElement('div');
     bookReadDiv.classList.add('book-read');
 
     const yesInput = document.createElement('input');
     yesInput.id = `${index}-yes`;
     yesInput.setAttribute('type', 'radio');
-    yesInput.setAttribute('name', 'read');
+    yesInput.setAttribute('name', `read-${index}`);
     yesInput.setAttribute('value', 'yes');
+    // If the book has been read, set this radio button as checked
+    if (book.read) {
+        yesInput.checked = 'checked';
+    }
+    
 
     const yesLabel = document.createElement('label');
     yesLabel.setAttribute('for', `${index}-yes`);
@@ -96,8 +101,12 @@ function createBookElement(book) {
     const noInput = document.createElement('input');
     noInput.id = `${index}-no`;
     noInput.setAttribute('type', 'radio');
-    noInput.setAttribute('name', 'read');
+    noInput.setAttribute('name', `read-${index}`);
     noInput.setAttribute('value', 'no');
+    // If the book has not been read, set this radio button as checked
+    if (!book.read) {
+        noInput.checked = 'checked';
+    }
 
     const noLabel = document.createElement('label');
     noLabel.setAttribute('for', `${index}-no`);
