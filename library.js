@@ -202,6 +202,12 @@ function createBook(e) {
 
 // removeBook function - removes a book from the DOM and myLibrary array
 function removeBook(e) {
+    // Confirm that the user wants to remove the selected book
+    const result = confirm("Are you sure you want to remove this book?");
+    if (result === false) {
+        return;
+    }
+    
     const index = e.target.getAttribute('data-index');
     myLibrary.splice(index, 1);
 
