@@ -1,11 +1,4 @@
 // myLibrary - an array containing book objects
-/*
-let myLibrary = [
-    new Book("The Hobbit", "J.R.R. Tolkien", 304, true),
-    new Book("The Name of the Wind", "Patrick Rothfuss", 662, true),
-    new Book("The Shining", "Stephen King", 659, false)
-];
-*/
 let myLibrary;
 
 // Book constructor
@@ -153,7 +146,28 @@ function renderBooks() {
 
 // isValidForm function - checks to ensure new book form inputs are valid
 function isValidForm() {
+    // Ensure all text fields are not empty
+    const textInputArr = Array.from(document.querySelectorAll('#new-book-form input[type="text"]'));
+    const emptyTextInput = textInputArr.some(input => {
+        return input.value === '';
+    });
+    if (emptyTextInput) {
+        return false;
+    }
 
+    // Ensure num-pages field is not empty
+    const numPagesField = document.querySelector('#num-pages');
+    if (numPagesField.value === '') {
+        return false;
+    }
+
+    // Ensure that one of the radio inputs is checked
+    const checkedRadioButton = document.querySelector('#new-book-form input[type="radio"]:checked');
+    if (checkedRadioButton === null) {
+        return false;
+    }
+
+    return true;
 }
 
 // toggleForm function - toggles the visibility of the new book form
@@ -214,6 +228,13 @@ function retrieveLibrary() {
 function createBook(e) {
     // Prevent default form submission behavior to prevent page reload
     e.preventDefault();
+
+    // Alert user if form input is not valid and return from function
+    if (!isValidForm()) {
+        alert('Please ensure all new book fields are filled out');
+        return;
+    }
+
 
     // Initialize form attribute object
     const formAtr = {};
