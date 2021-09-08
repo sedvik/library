@@ -132,11 +132,11 @@ function createBookElement(book) {
 }
 
 // renderBooks function - Loops through myLibrary array and adds each book to the DOM
-function renderBooks() {
-    // Clear any initial books from #book-container
-    document.querySelector('#book-container').textContent = '';
-    
+function renderBooks() {   
     const bookContainer = document.querySelector('#book-container');
+    
+    // Clear any initial books from #book-container
+    bookContainer.textContent ='';
 
     myLibrary.forEach(function(book) {
         const bookElement = createBookElement(book);
