@@ -4,6 +4,8 @@ This application allows you to enter new books by providing the title, author, n
 
 The primary skills/technologies practiced as part of this project include:
 
-1. Javascript object constructors and direct prototype modification instead of using ES6 class syntax
+1. Both Javascript object constructors and direct prototype modification, in addition to using ES6 class syntax**
 2. Dynamic html generation using vanilla javascript instead of other templating techniques
 3. localStorage API implementation so that app data can be persisted across site visits
+
+** Note: The initial project implementation used object constructor and prototype modification, while the current version uses ES6 class syntax
